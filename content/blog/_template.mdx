@@ -1,52 +1,101 @@
 ---
-title: "[Tiêu đề TENSION: Gây tò mò, có tính xung đột hoặc giải quyết 1 nỗi đau cụ thể]"
-date: "YYYY-MM-DD"
-tags: ["Architecture", "Engineering"]
-readTime: "5 min read"
-excerpt: "[Abstract]: Tóm tắt 1-2 câu nội dung cốt lõi nhất và giá trị người đọc sẽ nhận được."
+title: "Why Most RAG Systems Fail at Retrieval"
+date: "2026-05-07"
+tags: ["RAG", "LLM", "AI Systems"]
+readTime: "4 min read"
+excerpt: "Most RAG systems do not fail because of the LLM itself, but because retrieval quality silently collapses. This article explores the hidden bottlenecks behind chunking and retrieval design."
 ---
 
-> **Tóm tắt (Abstract):** Cung cấp bức tranh tổng thể về lý do tại sao bài viết này tồn tại. Vấn đề là gì và bài viết giải quyết nó như thế nào? (Giúp người đọc quét nhanh thông tin trước khi đi sâu).
-
-## Mở đầu (Storytelling Intro)
-
-[Bắt đầu bằng một câu chuyện, một tình huống có thật, một sai lầm bạn từng mắc phải hoặc một bối cảnh đời thường. Không vội đi trực tiếp vào kỹ thuật. Dẫn dắt người đọc đồng cảm với vấn đề.]
-
-*Ví dụ: "Tuần trước, hệ thống của chúng tôi sập toàn bộ chỉ vì một lỗi nhỏ ở cache..."*
+> **Abstract**  
+> RAG pipelines often look simple in tutorials, but real systems fail in subtle ways. This article explains why retrieval quality matters more than most people think — and how poor chunking can quietly destroy answer quality.
 
 ---
 
-## Vấn đề cốt lõi (Tạo Visual Rhythm)
+# The Problem Nobody Notices
 
-[Chia nhỏ văn bản thành các đoạn ngắn (2-3 câu). **In đậm các từ khóa hoặc thông điệp quan trọng nhất** (Tăng contrast body text) để người đọc dù lướt qua vẫn nắm được ý chính.]
+When I built my first RAG pipeline, everything worked perfectly.
 
-Để hiểu rõ hơn, hãy nhìn vào 3 điểm gãy chính:
+Small dataset. Fast retrieval. Accurate answers.
 
-- **Điểm gãy 1:** [Mô tả ngắn gọn]
-- **Điểm gãy 2:** [Mô tả ngắn gọn]
-- **Điểm gãy 3:** [Mô tả ngắn gọn]
+But after scaling to larger documents, the system suddenly started:
+- retrieving irrelevant chunks
+- mixing contexts
+- hallucinating facts
 
-> **Ghi chú (Note/Quote Block):** 
-> "Nếu bạn không chuẩn bị cho thất bại, bạn đang chuẩn bị để thất bại." - Chèn những highlight quan trọng, bài học xương máu hoặc lời trích dẫn ở đây.
+At first, I blamed the LLM.
 
-## Giải phẫu giải pháp (Diagram / Image)
+The real problem was retrieval.
 
-[Trăm nghe không bằng một thấy. Dùng một sơ đồ hoặc hình ảnh để minh họa cho kiến trúc, luồng suy nghĩ hoặc hệ thống.]
+---
 
-![Mô tả ý nghĩa của sơ đồ - thay thế bằng link ảnh thực tế](/path/to/image.png)
-*(Chú thích: Giải thích ngắn gọn về sơ đồ bên trên)*
+# Why Retrieval Becomes the Bottleneck
 
-## Bài học và Thực hành
+Most people focus on:
+- larger models
+- better prompts
+- longer context windows
 
-[Giải thích quá trình giải quyết vấn đề từng bước. Kết hợp các đoạn code hoặc cấu hình nếu có.]
+But retrieval quality often matters more than the model itself.
 
-```javascript
-// Đoạn code minh họa ngắn gọn, đúng trọng tâm
-const doSomething = () => {
-  return "Giải pháp";
-};
+Three major problems appear repeatedly:
+
+- **Poor chunking** → context gets fragmented  
+- **Weak embeddings** → semantically irrelevant matches  
+- **Large-scale retrieval** → noisy search results  
+
+> **Key Insight**  
+> A smaller embedding model with better chunking often outperforms a larger model with poor retrieval structure.
+
+---
+
+# A Simple Mental Model
+
+A RAG pipeline is basically:
+
+```text
+Documents
+   ↓
+Chunking
+   ↓
+Embedding
+   ↓
+Retrieval
+   ↓
+LLM Generation
 ```
 
-## Lời kết
+If retrieval fails, the LLM receives corrupted context.
 
-[Đóng lại câu chuyện từ phần mở bài. Rút ra một chân lý ngắn gọn. Đặt một câu hỏi mở để người đọc tự suy ngẫm.]
+And once the context is wrong, even strong models generate weak answers.
+
+---
+
+# What Actually Improved My System
+
+Three changes helped immediately:
+
+- semantic chunking instead of fixed token splits
+- hybrid retrieval (vector + keyword)
+- re-ranking retrieved chunks before generation
+
+The LLM stayed the same.
+
+The retrieval architecture changed.
+
+And answer quality improved dramatically.
+
+---
+
+# Final Thoughts
+
+RAG is not just:
+> “vector database + LLM”
+
+It is an information architecture problem.
+
+The hardest part is not generation.
+
+The hardest part is deciding:
+- what information matters
+- how it should be represented
+- how it should be retrieved efficiently
