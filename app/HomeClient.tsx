@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Mail, BookOpen, StickyNote, GraduationCap } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
+import { GithubIcon, LinkedinIcon, ScholarIcon } from '@/components/SocialIcons';
 import type { BlogPost, Note } from '@/lib/content';
 
 import Image from 'next/image';
+import avatarImg from '@/public/avatar.jpg';
 
 const interests = [
   'Computer Vision',
@@ -43,7 +44,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
         >
           <div style={{ flexShrink: 0, width: '64px', height: '64px', position: 'relative' }}>
             <Image 
-              src="/avatar.jpg" 
+              src={avatarImg} 
               alt="Jasmine Flower" 
               fill
               style={{ objectFit: 'cover', borderRadius: '50%' }}
@@ -78,40 +79,42 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
         {/* Social Links */}
         <motion.div
           custom={4} variants={fadeUp} initial="hidden" animate="visible"
-          style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}
+          style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}
         >
           {[
-            { href: 'https://github.com/Thanhthuii24', icon: <GithubIcon size={15} />, label: 'GitHub' },
-            { href: 'https://www.linkedin.com/in/thanh-thuy-luyen-838b57314/', icon: <LinkedinIcon size={15} />, label: 'LinkedIn' },
-            { href: 'mailto:thui.thanhluyen@gmail.com', icon: <Mail size={15} />, label: 'Email' },
+            { href: 'https://github.com/Thanhthuii24', icon: <GithubIcon size={18} />, label: 'GitHub' },
+            { href: 'https://www.linkedin.com/in/thanh-thuy-luyen-838b57314/', icon: <LinkedinIcon size={18} />, label: 'LinkedIn' },
+            { href: 'https://scholar.google.com/scholar?q=Thanhthuy+Luyen', icon: <ScholarIcon size={18} />, label: 'Google Scholar' },
+            { href: 'mailto:thui.thanhluyen@gmail.com', icon: <Mail size={18} />, label: 'Email' },
           ].map(({ href, icon, label }) => (
             <a
               key={label}
               href={href}
+              title={label}
               target={href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                padding: '0.45rem 0.9rem',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                width: '40px', height: '40px',
                 border: '1px solid var(--border)',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
+                borderRadius: '50%',
                 color: 'var(--text-secondary)',
                 transition: 'all 0.2s',
-                fontWeight: 500,
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--accent)';
                 e.currentTarget.style.color = 'var(--accent)';
                 e.currentTarget.style.background = 'var(--accent-light)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = 'var(--border)';
                 e.currentTarget.style.color = 'var(--text-secondary)';
                 e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              {icon}{label}
+              {icon}
             </a>
           ))}
         </motion.div>
