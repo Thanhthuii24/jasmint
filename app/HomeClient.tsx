@@ -31,7 +31,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
     <div>
 
       {/* ── Hero ── */}
-      <section style={{ background: 'var(--bg)', paddingTop: '5rem', paddingBottom: '4rem' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: '7rem', paddingBottom: '6rem' }}>
         <div className="container">
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
             <p style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem' }}>
@@ -52,20 +52,20 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                 priority
               />
             </div>
-            <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+            <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.05 }}>
               Jasmine · Thanh Thuy
             </h1>
           </motion.div>
 
-          <motion.p
-            custom={2} variants={fadeUp} initial="hidden" animate="visible"
-            style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '55ch', lineHeight: 1.7, marginBottom: '1.75rem' }}
-          >
-            I&apos;m a curious student exploring the world one idea at a time.
-            My interests lie at the intersection of AI and hardware —
-            especially Computer Vision, AI Agents, LLMs, TinyML, and IoT.
-            This space is where I document projects, research, and everything I learn along the journey.
-          </motion.p>
+          <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" style={{ marginBottom: '2.5rem' }}>
+            <p style={{ fontSize: '0.75rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem', fontWeight: 600 }}>Abstract</p>
+            <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '60ch', lineHeight: 1.8 }}>
+              I&apos;m a curious student exploring the world one idea at a time.
+              My interests lie at the intersection of AI and hardware —
+              especially Computer Vision, AI Agents, LLMs, TinyML, and IoT.
+              This space is where I document projects, research, and everything I learn along the journey.
+            </p>
+          </motion.div>
 
           {/* Interest Tags */}
           <motion.div
@@ -123,7 +123,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
       </section>
 
       {/* ── Recent Blog Posts ── */}
-      <section style={{ background: '#edf1f5', paddingTop: '4rem', paddingBottom: '4rem', borderTop: '1px solid var(--border-light)' }}>
+      <section style={{ background: '#edf1f5', paddingTop: '6rem', paddingBottom: '6rem', borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
           <motion.div
             custom={5} variants={fadeUp} initial="hidden" animate="visible"
@@ -183,7 +183,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
       </section>
 
       {/* ── Recent Notes ── */}
-      <section style={{ background: 'var(--bg)', paddingTop: '4rem', paddingBottom: '4rem', borderTop: '1px solid var(--border-light)' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: '6rem', paddingBottom: '6rem', borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
           <motion.div
             custom={9} variants={fadeUp} initial="hidden" animate="visible"
@@ -241,7 +241,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
       </section>
 
       {/* ── Publications & Awards ── */}
-      <section style={{ background: '#edf1f5', paddingTop: '4rem', paddingBottom: '5rem', borderTop: '1px solid var(--border-light)' }}>
+      <section style={{ background: '#edf1f5', paddingTop: '6rem', paddingBottom: '7rem', borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
           <motion.div
             custom={13} variants={fadeUp} initial="hidden" animate="visible"
