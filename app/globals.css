@@ -4,17 +4,17 @@
   --bg: #f4f1eb;
   --bg-secondary: #ebe6de;
   --bg-card: #f8f6f2;
-  --border: rgba(98, 116, 138, 0.12);
-  --border-light: rgba(98, 116, 138, 0.08);
+  --border: #ddd6cb;
+  --border-light: rgba(221, 214, 203, 0.6);
   --text-primary: #1f2328;
-  --text-secondary: #5e6875;
-  --text-muted: #7f92a7;
+  --text-secondary: #5f6773;
+  --text-muted: #8a94a6;
   --accent: #7f92a7;
   --accent-gold: #b49a7a;
   --accent-light: rgba(127, 146, 167, 0.1);
   --accent-hover: #6a7c8e;
-  --tag-bg: #e8e2d8;
-  --tag-text: #5e6875;
+  --tag-bg: #ebe6de;
+  --tag-text: #5f6773;
   --tag-hover-bg: #7f92a7;
   --tag-hover-text: #ffffff;
 }
@@ -31,7 +31,8 @@ html {
 
 body {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
+  background: radial-gradient(circle at top left, rgba(127,146,167,0.10), transparent 35%), var(--bg);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;

@@ -29,18 +29,23 @@ export default function NotesList({ notes }: { notes: Note[] }) {
           <motion.div key={note.slug} custom={2 + i} variants={fadeUp} initial="hidden" animate="visible">
             <article
               style={{
-                padding: '1.25rem 1.5rem',
-                border: '1px solid var(--border-light)',
-                borderRadius: '12px',
-                transition: 'all 0.2s',
+                padding: '1.5rem',
+                background: 'rgba(248, 246, 242, 0.75)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                border: '1px solid var(--border)',
+                borderRadius: '24px',
+                transition: 'all 0.3s ease',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.background = '#fafafa';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(127, 146, 167, 0.1)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border-light)';
-                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.borderColor = 'var(--border)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.6rem', gap: '1rem', flexWrap: 'wrap' }}>
