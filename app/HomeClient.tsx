@@ -43,7 +43,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
         >
           <div style={{ flexShrink: 0, width: '64px', height: '64px', position: 'relative' }}>
             <Image 
-              src="/avatar.png" 
+              src="/avatar.jpg" 
               alt="Jasmine Flower" 
               fill
               style={{ objectFit: 'cover', borderRadius: '50%' }}
