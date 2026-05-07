@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f4f5f7; /* Light grayish-blue for the page background */
-  --bg-secondary: #e5e7eb;
-  --bg-card: #ffffff; /* White for content blocks */
-  --border: #e5e7eb;
-  --border-light: #f3f4f6;
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-muted: #888888;
-  --accent: #6366f1;
-  --accent-light: #eef2ff;
-  --accent-hover: #4f46e5;
-  --green: #10b981;
-  --tag-bg: #f3f4f6;
-  --tag-text: #374151;
+  --bg: #f4f1eb;
+  --bg-secondary: #ebe6de;
+  --bg-card: #f8f6f2;
+  --border: rgba(98, 116, 138, 0.12);
+  --border-light: rgba(98, 116, 138, 0.08);
+  --text-primary: #1f2328;
+  --text-secondary: #5e6875;
+  --text-muted: #7f92a7;
+  --accent: #7f92a7;
+  --accent-gold: #b49a7a;
+  --accent-light: rgba(127, 146, 167, 0.1);
+  --accent-hover: #6a7c8e;
+  --tag-bg: #e8e2d8;
+  --tag-text: #5e6875;
+  --tag-hover-bg: #7f92a7;
+  --tag-hover-text: #ffffff;
 }
 
 * {
@@ -38,9 +40,10 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), 'Cormorant Garamond', serif;
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
@@ -65,23 +68,23 @@ a {
 code {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.875em;
-  background: var(--tag-bg);
+  background: var(--bg-secondary);
   padding: 0.15em 0.4em;
   border-radius: 4px;
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 pre {
-  background: #0f0f0f;
-  border-radius: 10px;
+  background: #2b3138;
+  border-radius: 6px;
   padding: 1.25rem;
   overflow-x: auto;
-  border: 1px solid #222;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 pre code {
   background: transparent;
-  color: #e5e5e5;
+  color: #e6edf3;
   font-size: 0.875rem;
   padding: 0;
 }
@@ -137,17 +140,15 @@ pre code {
   padding: 0.2rem 0.65rem;
   background: var(--tag-bg);
   color: var(--tag-text);
-  border-radius: 99px;
+  border-radius: 6px;
   font-size: 0.78rem;
   font-weight: 500;
-  border: 1px solid var(--border-light);
   transition: all 0.2s;
 }
 
 .tag:hover {
-  background: var(--accent-light);
-  color: var(--accent);
-  border-color: var(--accent-light);
+  background: var(--tag-hover-bg);
+  color: var(--tag-hover-text);
 }
 
 /* Status badge */
