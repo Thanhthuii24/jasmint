@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
+import { Inter, JetBrains_Mono, Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,6 +19,12 @@ const jetbrainsMono = JetBrains_Mono({
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
 });
@@ -48,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body>
         <div style={{
           position: 'fixed',

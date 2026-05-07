@@ -52,7 +52,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                 priority
               />
             </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+            <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
               Jasmine · Thanh Thuy
             </h1>
           </motion.div>
