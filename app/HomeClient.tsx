@@ -6,6 +6,8 @@ import { ArrowRight, Mail, BookOpen, StickyNote, GraduationCap } from 'lucide-re
 import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
 import type { BlogPost, Note } from '@/lib/content';
 
+import Image from 'next/image';
+
 const interests = [
   'Computer Vision',
   'AI Agents',
@@ -35,12 +37,23 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
           </p>
         </motion.div>
 
-        <motion.h1
+        <motion.div
           custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1.25rem' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}
         >
-          Jasmine · Thanh Thuy
-        </motion.h1>
+          <div style={{ flexShrink: 0, width: '64px', height: '64px', position: 'relative' }}>
+            <Image 
+              src="/avatar.png" 
+              alt="Jasmine Flower" 
+              fill
+              style={{ objectFit: 'cover', borderRadius: '50%' }}
+              priority
+            />
+          </div>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+            Jasmine · Thanh Thuy
+          </h1>
+        </motion.div>
 
         <motion.p
           custom={2} variants={fadeUp} initial="hidden" animate="visible"
