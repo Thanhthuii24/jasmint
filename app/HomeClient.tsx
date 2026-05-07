@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Mail, BookOpen, StickyNote } from 'lucide-react';
+import { ArrowRight, Mail, BookOpen, StickyNote, GraduationCap } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
 import type { BlogPost, Note } from '@/lib/content';
 
@@ -112,7 +112,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <BookOpen size={18} style={{ color: 'var(--accent)' }} />
-            <h2 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Recent Posts</h2>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Recent Blog</h2>
           </div>
           <Link
             href="/blog"
@@ -215,6 +215,81 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>{note.date}</span>
                 </div>
               </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Publications & Awards ── */}
+      <section style={{ paddingTop: '3rem' }}>
+        <motion.div
+          custom={13} variants={fadeUp} initial="hidden" animate="visible"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}
+        >
+          <GraduationCap size={18} style={{ color: 'var(--accent)' }} />
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Publications & Awards</h2>
+        </motion.div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {[
+            {
+              title: 'Research on Generative Model for Pulsed Eddy Current Testing',
+              venue: 'Scientific Research, Phenikaa University',
+              status: '4th Prize',
+              year: '2026',
+              type: 'award'
+            },
+            {
+              title: 'Hardware-Algorithm Co-design for Tiny AI on UAVs',
+              venue: 'Conference Paper',
+              status: 'Under Review',
+              year: '2026',
+              type: 'paper'
+            }
+          ].map((pub, i) => (
+            <motion.div key={pub.title} custom={14 + i} variants={fadeUp} initial="hidden" animate="visible">
+              <div
+                style={{
+                  padding: '1.25rem 1.5rem',
+                  border: '1px solid var(--border-light)',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  gap: '1rem',
+                  transition: 'all 0.2s',
+                  background: 'var(--bg)',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'var(--accent)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.06)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <div>
+                  <h3 style={{ fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem', lineHeight: 1.4 }}>
+                    {pub.title}
+                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{pub.venue}</span>
+                    <span style={{ color: 'var(--border)', fontSize: '0.75rem' }}>·</span>
+                    <span style={{ 
+                      fontSize: '0.7rem', 
+                      padding: '0.15rem 0.5rem', 
+                      borderRadius: '4px',
+                      background: pub.type === 'award' ? 'rgba(234, 179, 8, 0.1)' : 'rgba(99, 102, 241, 0.1)',
+                      color: pub.type === 'award' ? '#ca8a04' : 'var(--accent)',
+                      fontWeight: 500
+                    }}>
+                      {pub.status}
+                    </span>
+                  </div>
+                </div>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>{pub.year}</span>
+              </div>
             </motion.div>
           ))}
         </div>
