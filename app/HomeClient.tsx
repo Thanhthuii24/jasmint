@@ -151,6 +151,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     gap: '1rem',
+                    background: 'var(--bg-card)',
                     transition: 'all 0.2s',
                     cursor: 'pointer',
                   }}
@@ -161,7 +162,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.borderColor = 'var(--border-light)';
-                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.background = 'var(--bg-card)';
                     e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
@@ -210,6 +211,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     gap: '1rem',
+                    background: 'var(--bg-card)',
                     transition: 'all 0.2s',
                   }}
                   onMouseEnter={e => {
@@ -219,7 +221,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.borderColor = 'var(--border-light)';
-                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.background = 'var(--bg-card)';
                     e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
@@ -274,7 +276,7 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
                   alignItems: 'flex-start',
                   gap: '1rem',
                   transition: 'all 0.2s',
-                  background: 'var(--bg)',
+                  background: 'var(--bg-card)',
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = 'var(--accent)';
