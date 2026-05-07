@@ -20,7 +20,9 @@ export interface BlogPost extends BaseContent {
 export interface Note extends BaseContent {}
 
 function getMdxFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => file.endsWith('.mdx') || file.endsWith('.md'));
+  return fs.readdirSync(dir).filter((file) => 
+    !file.startsWith('_') && (file.endsWith('.mdx') || file.endsWith('.md'))
+  );
 }
 
 export function getPosts(): BlogPost[] {
@@ -45,7 +47,7 @@ export function getPosts(): BlogPost[] {
     } as BlogPost;
   });
 
-  return posts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
@@ -73,7 +75,7 @@ export function getNotes(): Note[] {
     } as Note;
   });
 
-  return notes.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+  return notes.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getNoteBySlug(slug: string): Note | undefined {
