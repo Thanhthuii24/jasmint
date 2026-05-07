@@ -12,8 +12,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function NotePage({ params }: { params: { slug: string } }) {
-  const note = getNoteBySlug(params.slug);
+export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const note = getNoteBySlug(resolvedParams.slug);
   if (!note) notFound();
 
   return (
