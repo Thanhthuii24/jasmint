@@ -1,0 +1,31 @@
+---
+title: "Physics-guided Diffusion for NDT Imaging"
+date: "2025-03-20"
+readTime: "10 min read"
+tags: ["Diffusion", "Computer Vision", "Research"]
+excerpt: "Non-destructive testing with pulsed eddy currents generates unique signals. Here's how I used latent diffusion models guided by physics priors to reconstruct defect images."
+---
+
+## Background
+
+Non-destructive testing (NDT) with pulsed eddy currents (PEC) allows us to detect subsurface defects in conductive materials without damaging them. The challenge: reconstructing a high-quality defect image from noisy PEC signals is an ill-posed inverse problem.
+
+## Why diffusion models?
+
+Diffusion models have shown remarkable success in image generation and restoration tasks. Their ability to model complex data distributions makes them well-suited for inverse problems.
+
+## The physics-guided approach
+
+Instead of treating reconstruction as a pure learning problem, we incorporate physics priors:
+
+1. **Forward model**: simulate what a defect of shape X would produce as a PEC signal
+2. **Guidance**: use this physics model to steer the diffusion sampling process
+3. **Result**: reconstructions that are both data-consistent and physically plausible
+
+## Key results
+
+Our approach outperforms baseline deep learning methods on reconstruction quality metrics while being more interpretable — the physics guidance ensures the model doesn't hallucinate physically impossible defect shapes.
+
+## Current status
+
+This work has been accepted and is part of my ongoing research. I'll share more details including the paper link once it's publicly available.

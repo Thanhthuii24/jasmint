@@ -1,0 +1,44 @@
+---
+title: "TinyML on UAVs: Running AI at the Edge"
+date: "2025-04-15"
+readTime: "8 min read"
+tags: ["TinyML", "Edge AI", "IoT"]
+excerpt: "Running neural networks on microcontrollers is hard. Running them on a UAV in real-time is even harder. This post covers the hardware-algorithm co-design challenges I've been working through."
+---
+
+## The challenge
+
+Running neural networks on resource-constrained hardware is genuinely hard. When that hardware is also flying at 30km/h, the constraints multiply.
+
+## Why UAVs?
+
+UAVs (drones) need real-time inference for tasks like:
+- Obstacle detection
+- Object tracking
+- Anomaly detection in inspection tasks
+
+## The hardware constraints
+
+A typical microcontroller used in UAVs:
+- ~256KB RAM
+- ~1MB Flash
+- No GPU, no FPU sometimes
+
+This means standard PyTorch models are completely out of the question.
+
+## What works
+
+- **Quantization**: INT8 instead of FP32 — 4x smaller, minimal accuracy loss
+- **Pruning**: remove redundant weights
+- **Knowledge distillation**: train a tiny student model from a large teacher
+- **Architecture search**: MobileNet, MCUNet, EfficientNet-Lite
+
+## MCUNet
+
+MCUNet is a framework that co-designs the neural architecture and inference engine for microcontrollers. It's been a big part of my research focus.
+
+The key insight: optimize the *memory footprint* of the entire inference graph, not just the model size.
+
+## Next steps
+
+I'm exploring how to deploy a lightweight object detector on an STM32 microcontroller for UAV-based NDT (non-destructive testing) applications. Updates coming soon.

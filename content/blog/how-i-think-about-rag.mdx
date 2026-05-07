@@ -1,0 +1,50 @@
+---
+title: "How I Think About RAG Systems"
+date: "2025-05-01"
+readTime: "6 min read"
+tags: ["LLM", "RAG", "AI"]
+excerpt: "Retrieval-Augmented Generation is one of the most practical LLM patterns today. Here's how I think about building RAG pipelines from scratch — from chunking to retrieval to generation."
+---
+
+## What is RAG?
+
+Retrieval-Augmented Generation (RAG) is a pattern that combines the strengths of retrieval systems with the generation capabilities of LLMs. Instead of relying solely on the model's parametric knowledge, RAG dynamically fetches relevant context at inference time.
+
+The core pipeline looks like this:
+
+1. **Load** — ingest your documents
+2. **Chunk** — split into meaningful segments
+3. **Embed** — encode chunks as vectors
+4. **Retrieve** — find the most relevant chunks for a query
+5. **Generate** — pass retrieved context + query to the LLM
+
+## Why it matters
+
+LLMs have a knowledge cutoff and can hallucinate facts. RAG addresses both problems by grounding responses in external, up-to-date knowledge sources.
+
+## The chunking problem
+
+One of the most underrated decisions in RAG is how you chunk your documents. Too small → loss of context. Too large → noisy retrieval.
+
+I've found that **semantic chunking** (splitting at natural semantic boundaries) outperforms naive fixed-size chunking in most cases.
+
+## Retrieval strategies
+
+- **Dense retrieval**: embed query + docs, use cosine similarity (e.g., FAISS, ChromaDB)
+- **Sparse retrieval**: BM25, keyword-based
+- **Hybrid**: combine both for best of both worlds
+
+## What I'm building
+
+I'm currently building SimRAG — a simple end-to-end RAG system from scratch using Python. No magic libraries, just the fundamentals.
+
+```python
+# Simple retrieval step
+def retrieve(query: str, top_k: int = 5) -> list[str]:
+    query_embedding = embedder.encode(query)
+    scores = cosine_similarity(query_embedding, doc_embeddings)
+    top_indices = scores.argsort()[-top_k:][::-1]
+    return [chunks[i] for i in top_indices]
+```
+
+More coming soon as the project evolves.
