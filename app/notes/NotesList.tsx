@@ -36,7 +36,7 @@ export default function NotesList({ notes }: { notes: Note[] }) {
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.background = '#fafafa';
+                e.currentTarget.style.background = '#ffffff';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = 'var(--border-light)';

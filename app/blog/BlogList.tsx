@@ -40,11 +40,13 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                   e.currentTarget.style.borderColor = 'var(--accent)';
                   e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.08)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.background = '#ffffff';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.borderColor = 'var(--border-light)';
                   e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.background = 'transparent';
                 }}
               >
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.75rem' }}>
