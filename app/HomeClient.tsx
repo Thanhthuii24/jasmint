@@ -254,18 +254,54 @@ export default function HomeClient({ recentPosts, recentNotes }: { recentPosts: 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {[
               {
-                title: 'Research on Generative Model for Pulsed Eddy Current Testing',
+                title:
+                  'GenNDT: Conditional 1D NDT Signal Generation Framework with Diffusion Model',
+                authors:
+                  'Thanhthuy Luyen, T. P. Vu, C. Truong, X. Nguyen, M. Le, Q. V. Pham',
+                venue: 'ATC Conference',
+                status: 'Published',
+                year: '2025',
+                type: 'paper'
+              },
+              {
+                title:
+                  'PhyDiff: Physics-Guided Latent Diffusion Models for 1D Physical Signal Generation',
+                authors:
+                  'Thanhthuy Luyen, C. Truong, L. Tran, X. Nguyen, M. Le',
+                venue: 'CITA Conference',
+                status: 'Accepted',
+                year: '2026',
+                note: 'Not yet public',
+                type: 'paper'
+              },
+              {
+                title:
+                  'Spatial Context Learning with Pseudo-Normal Selection for Unsupervised Anomaly Detection in Pulsed ECT',
+                authors:
+                  'L. Tran, Thanhthuy Luyen, C. Truong, X. Nguyen, M. Le',
+                venue: 'CITA Conference',
+                status: 'Accepted',
+                year: '2026',
+                note: 'Not yet public',
+                type: 'paper'
+              },
+              {
+                title:
+                  'A Text-Conditioned Latent Diffusion Framework for Synthesizing Magnetic Images in ECT',
+                authors:
+                  'C. Truong, Thanhthuy Luyen, L. Tran, X. Nguyen, M. Le',
+                venue: 'ICISN Conference',
+                status: 'Published',
+                year: '2026',
+                type: 'paper'
+              },
+              {
+                title:
+                  'Research on Generative Model for Pulsed Eddy Current Testing',
                 venue: 'Scientific Research, Phenikaa University',
                 status: '4th Prize',
                 year: '2026',
                 type: 'award'
-              },
-              {
-                title: 'Hardware-Algorithm Co-design for Tiny AI on UAVs',
-                venue: 'Conference Paper',
-                status: 'Under Review',
-                year: '2026',
-                type: 'paper'
               }
             ].map((pub, i) => (
               <motion.div key={pub.title} custom={14 + i} variants={fadeUp} initial="hidden" animate="visible">
